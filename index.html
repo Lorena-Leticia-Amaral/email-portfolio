@@ -526,7 +526,7 @@
     <ul class="nav-links">
       <li><a href="#work">Trabalhos</a></li>
       <li><a href="#about">Sobre</a></li>
-      <li><a href="mailto:lorenaleticia.emprego@gmail.com">Contato</a></li>
+      <li><a href="/cdn-cgi/l/email-protection#9cf0f3eef9f2fdf0f9e8f5fff5fdb2f9f1eceef9fbf3dcfbf1fdf5f0b2fff3f1">Contato</a></li>
     </ul>
   </nav>
 
@@ -589,7 +589,7 @@
   <footer>
     <p>© <span id="year"></span> Email Portfolio</p>
     <div class="footer-contact">
-      <a href="mailto:lorenaleticia.emprego@gmail.com">lorenaleticia.emprego@gmail.com</a>
+      <a href="/cdn-cgi/l/email-protection#472b28352229262b22332e242e2669222a373522202807202a262e2b6924282a"><span class="__cf_email__" data-cfemail="a7cbc8d5c2c9c6cbc2d3cec4cec689c2cad7d5c2c0c8e7c0cac6cecb89c4c8ca">[email&#160;protected]</span></a>
     </div>
   </footer>
 
@@ -606,7 +606,7 @@
     </div>
   </div>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     /*
     ============================================================
     CONFIGURAÇÃO DO PORTFÓLIO
@@ -621,40 +621,22 @@
     */
     const emails = [
       {
-        title: "Boas-vindas",
-        desc: "E-mail de onboarding para novos usuários da plataforma.",
-        type: "template",
-        file: "emails/boas-vindas.html"
-      },
-      {
-        title: "Black Friday",
-        desc: "Campanha promocional com contagem regressiva e CTAs de alta conversão.",
+        title: "Newsletter — Continente Shopping",
+        desc: "Newsletter com eventos, menu executivo e benefícios do Continente Shopping.",
         type: "campanha",
-        file: "emails/black-friday.html"
+        file: "email/newsletter-continente.html"
       },
       {
-        title: "Newsletter Mensal",
-        desc: "Template editorial para envio de conteúdo e novidades.",
-        type: "template",
-        file: "emails/newsletter.html"
-      },
-      {
-        title: "Recuperação de Carrinho",
-        desc: "Campanha automatizada para recuperar vendas abandonadas.",
+        title: "Páscoa — Balneário Shopping",
+        desc: "Campanha de Páscoa com produtos personalizados da DENGO e eventos do shopping.",
         type: "campanha",
-        file: "emails/carrinho-abandonado.html"
+        file: "email/pascoa-balneario-dengo.html"
       },
       {
-        title: "Confirmação de Pedido",
-        desc: "Template transacional com detalhes do pedido e rastreamento.",
-        type: "template",
-        file: "emails/confirmacao-pedido.html"
-      },
-      {
-        title: "Reengajamento",
-        desc: "Campanha para reativar usuários inativos com oferta exclusiva.",
+        title: "LP Páscoa — Balneário Shopping",
+        desc: "Landing page de Páscoa com produtos das lojas Lindt, Dengo e Cacau Show.",
         type: "campanha",
-        file: "emails/reengajamento.html"
+        file: "email/lp-pascoa-balneario.html"
       }
     ];
 
@@ -746,18 +728,3 @@
           animateCount(document.getElementById('count-total'), total);
           animateCount(document.getElementById('count-templates'), templates);
           animateCount(document.getElementById('count-campanhas'), campanhas);
-          observer.disconnect();
-        }
-      });
-    }, { threshold: 0.3 });
-
-    observer.observe(document.querySelector('.skills-grid'));
-
-    /* ── Year ── */
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    /* ── Init ── */
-    renderGrid('all');
-  </script>
-</body>
-</html>
