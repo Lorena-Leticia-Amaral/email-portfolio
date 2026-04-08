@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Páscoa Balneário Shopping 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rosa:         #C2556A;
+    --rosa-dark:    #9B3A50;
+    --rosa-bg:      #FBF0F2;
+    --rosa-soft:    #F5D5DC;
+    --brown:        #2C1810;
+    --white:        #FFFFFF;
+    --green:        #1E7B4E;
+    --radius:       16px;
+    --shadow:       0 4px 24px rgba(194,85,106,0.1);
+    --shadow-hover: 0 12px 40px rgba(194,85,106,0.22);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--rosa-bg); font-family: 'Inter', sans-serif; color: var(--brown); overflow-x: hidden; }
+  .site-header { background: #fff; border-bottom: 1px solid var(--rosa-soft); line-height: 0; }
+  .site-header img { width:100%; height:auto; display:block; }
+  .wrapper { max-width:1200px; margin:0 auto; padding:0 32px; }
+  .store-section { padding:72px 0 80px; }
+  .store-section + .store-section { border-top:1px solid var(--rosa-soft); }
+  .store-header { display:flex; align-items:center; justify-content:space-between; gap:24px; margin-bottom:40px; flex-wrap:wrap; }
+  .store-info { display:flex; align-items:center; gap:20px; }
+  .store-eyebrow { font-size:0.7rem; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:var(--rosa); margin-bottom:4px; }
+  .store-name { font-family:'Cormorant Garamond', serif; font-size:2.6rem; font-weight:700; color:var(--brown); line-height:1; }
+  .btn-store-group { display:flex; gap:12px; flex-wrap:wrap; flex-shrink:0; }
+  .btn-store {
+    display:inline-flex; align-items:center; gap:8px;
+    background: var(--green); color:var(--white);
+    font-family:'Inter', sans-serif; font-size:0.85rem; font-weight:600;
+    text-decoration:none; padding:12px 22px; border-radius:50px;
+    letter-spacing:0.02em; white-space:nowrap;
+    transition:background 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow:0 4px 16px rgba(30,123,78,0.25);
+  }
+  .btn-store:hover { background:#155f3b; transform:translateY(-2px); box-shadow:0 8px 24px rgba(30,123,78,0.35); }
+  .btn-store svg { width:18px; height:18px; flex-shrink:0; }
+  .store-footer-btns { display:flex; gap:12px; margin-top:36px; flex-wrap:wrap; }
+  .grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+  .card {
+    background:var(--white); border-radius:var(--radius); overflow:hidden;
+    box-shadow:var(--shadow); display:flex; flex-direction:column;
+    text-decoration:none; color:inherit; cursor:pointer; position:relative;
+    transition:transform 0.24s cubic-bezier(.34,1.56,.64,1), box-shadow 0.24s;
+  }
+  .card:hover { transform:translateY(-6px); box-shadow:var(--shadow-hover); }
+  .card-img-wrap { overflow:hidden; background:#FEF0F2; aspect-ratio:1; }
+  .card-img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.4s ease; }
+  .card:hover .card-img { transform:scale(1.07); }
+  .card-body { padding:14px 16px 12px; display:flex; flex-direction:column; gap:6px; flex:1; }
+  .card-name { font-family:'Cormorant Garamond', serif; font-size:1.05rem; font-weight:600; color:var(--brown); line-height:1.3; flex:1; }
+  .card-price { font-size:1rem; font-weight:600; color:var(--green); }
+  .card-cta { display:none; }
+  .card::after {
+    content:"💬 Clique para pedir";
+    position:absolute; bottom:0; left:0; right:0;
+    background:rgba(30,123,78,0.92); color:#fff;
+    font-size:0.72rem; font-weight:600; letter-spacing:0.04em;
+    text-align:center; padding:7px 0;
+    opacity:0; transform:translateY(4px);
+    transition:opacity 0.2s, transform 0.2s; pointer-events:none;
+  }
+  .card:hover::after { opacity:1; transform:translateY(0); }
+  .site-footer { background:var(--rosa-dark); color:rgba(255,255,255,0.8); text-align:center; padding:40px 24px; font-size:0.82rem; line-height:1.9; margin-top:40px; }
+  .site-footer strong { color:#fff; font-weight:600; }
+  .site-footer a { color:rgba(255,255,255,0.55); text-decoration:underline; }
+  @media (max-width:900px) { .grid { grid-template-columns:repeat(3,1fr); } .store-name { font-size:2rem; } }
+  @media (max-width:600px) {
+    .wrapper { padding:0 16px; }
+    .grid { grid-template-columns:repeat(2,1fr); gap:12px; }
+    .store-section { padding:48px 0 56px; }
+    .store-header { flex-direction:column; align-items:flex-start; gap:16px; }
+    .store-name { font-size:1.8rem; }
+    .card-name { font-size:0.95rem; }
+    .btn-store { font-size:0.8rem; padding:10px 16px; }
+    .store-footer-btns { flex-direction:column; }
+    .store-footer-btns .btn-store { justify-content:center; }
+    .card::after { display:none; }
+    .card-cta {
+      display:block;
+      margin:0 16px 14px;
+      background:var(--green);
+      color:#fff;
+      font-size:0.72rem;
+      font-weight:600;
+      letter-spacing:0.04em;
+      text-align:center;
+      padding:7px 0;
+      border-radius:6px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <img src="https://image.almeidajunior.com.br/lib/fe32117371640479741078/m/1/Header+-+Roxo+-+BS.png" alt="Balneário Shopping">
+  <img src="https://image.almeidajunior.com.br/lib/fe32117371640479741078/m/1/Header-E-mail-Pascoa.png" alt="Páscoa 2026">
+</header>
+
+<!-- ════ LINDT ════ -->
+<section class="store-section">
+  <div class="wrapper">
+    <div class="store-header">
+      <div class="store-info"><div>
+        <p class="store-eyebrow">Chocolates Premium</p>
+        <h2 class="store-name">LINDT</h2>
+      </div></div>
+      <div class="btn-store-group">
+        <a class="btn-store" href="https://api.whatsapp.com/send?phone=554733059501" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+          Falar com a loja
+        </a>
+      </div>
+    </div>
+    <div class="grid">
+      <a class="card" href="https://api.whatsapp.com/send?phone=554733059501" target="_blank"><div class="card-img-wrap"><img class="card-img" src="https://image.almeidajunior.com.br/lib/fe32117371640479741078/m/1/VIP+-+LINDT+-+Lindt+trufado+-+BS.png" alt="Lindt trufado"></div><div class="card-body"><p class="card-name">Lindt trufado</p><p class="card-price">R$ 299,99</p><span class="card-cta">💬 Clique para pedir</span></div></a>
+      <a class="card" href="https://api.whatsapp.com/send?phone=554733059501" target="_blank"><div class="card-img-wrap"><img class="card-img" src="https://image.almeidajunior.com.br/lib/fe32117371640479741078/m/1/VIP+-+LINDT+-+Ovo+trufado+avela++-+BS.png" alt="Trufado avelã"></div><div class="card-body"><p class="card-name">Trufado avelã</p><p class="card-price">R$ 219,99</p><span class="card-cta">💬 Clique para pedir</span></div></a>
+      <a class="card" href="https://api.whatsapp.com/send?phone=554733059501" target="_blank"><div class="card-img-wrap"><img class="card-img" src="https://image.almeidajunior.com.br/lib/fe32117371640479741078/m/1/VIP+-+LINDT+-+Cesta+G+-+BS.png" alt="Cesta G"></div><div class="card-body"><p class="card-name">Cesta G</p><p class="card-price">R$ 300,00</p><span class="card-cta">💬 Clique para pedir</span></div></a>
+      <a class="card" href="https://api.whatsapp.com/send?phone=554733059501" target="_blank"><div class="card-img-wrap"><img class="card-img" src="https://image.almeidajunior.com.br/lib/fe32117371640479741078/m/1/VIP+-+LINDT+-+Ovo+Lindt+Trufado+-+BS.png" alt="Lindt Trufado Ovo"></div><div class="card-body"><p class="card-name">Lindt Trufado Ovo</p><p class="card-price">R$ 219,99</p><span class="card-cta">💬 Clique para pedir</span></div></a>
+      <a class="card" href="https://api.whatsapp.com/send?phone=554733059501" target="_blank"><div class="card-img-wrap"><img class="card-img" src="https://image.almeidajunior.com.br/lib/fe32117371640479741078/m/1/VIP+-+LINDT+-+Ovo+Tubo+Lindor+-+BS.png" alt="Tubo Lindor"></div><div class="card-body"><p class="card-name">Tubo Lindor</p><p class="card-price">R$ 199,99</p><span class="card-cta">💬 Clique para pedir</span></div></a>
+      <a class="card" href="https://api.whatsapp.com/send?phone=554733059501" target="_blank"><div class="card-img-wrap"><img class="card-img" src="https://image.almeidajunior.com.br/lib/fe32117371640479741078/m/1/VIP+-+LINDT+-+Ovo+gold+bunny+Luxury+-+BS.png" alt="Gold Bunny Luxury"></div><div class="card-body"><p class="card-name">Gold Bunny Luxury</p><p class="card-price">R$ 189,99</p><span class="card-cta">💬 Clique para pedir</span></div></a>
+      <a class="card" href="https://api.whatsapp.com/send?phone=554733059501" target="_blank"><div class="card-img-wrap"><img class="card-img" src="https://image.almeidajunior.com.br/lib/fe32117371640479741078/m/1/VIP+-+LINDT+-+Lata+Azul+xl+-+BS.png" alt="Lata Azul XL"></div><div class="card-body"><p class="card-name">Lata Azul XL</p><p class="card-price">R$ 189,99</p><span class="card-cta">💬 Clique para pedir</span></div></a>
+      <a class="card" href="https://api.whatsapp.com/send?phone=554733059501" target="_blank"><div class="card-img-wrap"><img class="card-img" src="https://image.almeidajunior.com.br/lib/fe32117371640479741078/m/1/Premium+-+LINDIT+-+Ovo+Lindt+lindor+-+BS.png" alt="Lindt Lindor"></div><div class="card-body"><p class="card-name">Lindt Lindor</p><p class="card-price">R$ 159,99</p><span class="card-cta">💬 Clique para pedir</span></div></a>
+      <a class="card" href="https://api.whatsapp.com/send?phone=554733059501" target="_blank"><div class="card-img-wrap"><img class="card-img" src="https://image.almeidajunior.com.br/lib/fe32117371640479741078/m/1/Premium+-+LINDIT+-+Ovo+Lindt+Lindor+Branco+-+BS.png" alt="Lindt Lindor Branco"></div><div class="card-body"><p class="card-name">Lindt Lindor Branco</p><p class="card-price">R$ 159,99</p><span class="card-cta">💬 Clique para pedir</span></div></a>
+      <a class="card" href="https://api.whatsapp.com/send?phone=554733059501" target="_blank"><div class="card-img-wrap"><img class="card-img" src="https://image.almeidajunior.com.br/lib/fe32117371640479741078/m/1/Premium+-+LINDIT+-+Ovo+Lindt+Lindor+ao+Leite+-+BS.png" alt="Lindt Lindor ao Leite"></div><div class="card-body"><p class="card-name">Lindt Lindor ao Leite</p><p class="card-price">R$ 159,99</p><span class="card-cta">💬 Clique para pedir</span></div></a>
+      <a class="card" href="https://api.whatsapp.com/send?phone=554733059501" target="_blank"><div class="card-img-wrap"><img class="card-img" src="https://image.almeidajunior.com.br/lib/fe32117371640479741078/m/1/Premium+-+LINDIT+-+Lindor+Caixa+deluxe+sortido+-+BS.png" alt="Lindor Caixa Deluxe Sortido"></div><div class="card-body"><p class="card-name">Lindor Caixa Deluxe Sortido</p><p class="card-price">R$ 149,99</p><span class="card-cta">💬 Clique para pedir</span></div></a>
+      <a class="card" href="https://api.whatsapp.com/send?phone=554733059501" target="_blank"><div class="card-img-wrap"><img class="card-img" src="https://image.almeidajunior.com.br/lib/fe32117371640479741078/m/1/Premium+-+LINDIT+-+Ovo+Lindt+dark+-+BS.png" alt="Lindt Dark"></div><div class="card-body"><p class="card-name">Lindt Dark</p><p class="card-price">R$ 149,99</p><span class="card-cta">💬 Clique para pedir</span></div></a>
+      <a class="card" href="https://api.whatsapp.com/send?phone=554733059501" target="_blank"><div class="card-img-wrap"><img class="card-img" src="https://image.almeidajunior.com.br/lib/fe32117371640479741078/m/1/Premium+-+LINDIT+-+Ovo+Lindt+nocciolate+-+BS.png" alt="Lindt Nocciolate"></div><div class="card-body"><p class="card-name">Lindt Nocciolate</p><p class="card-price">R$ 169,99</p><span class="card-cta">💬 Clique para pedir</span></div></a>
+      <a class="card" href="https://api.whatsapp.com/send?phone=554733059501" target="_blank"><div class="card-img-wrap"><img class="card-img" src="https://image.almeidajunior.com.br/lib/fe32117371640479741078/m/1/Premium+-+LINDIT+-+Ovo+Branco+com+Pistache+-+BS.png" alt="Branco com Pistache"></div><div class="card-body"><p class="card-name">Branco com Pistache</p><p class="card-price">R$ 179,99</p><span class="card-cta">💬 Clique para pedir</span></div></a>
+      <a class="card" href="https://api.whatsapp.com/send?phone=554733059501" target="_blank"><div class="card-img-wrap"><img class="card-img" src="https://image.almeidajunior.com.br/lib/fe32117371640479741078/m/1/Premium+-+LINDIT+-+Ovo+Lindt+Frutas+Vermelhas+-+BS.png" alt="Lindt Frutas Vermelhas"></div><div class="card-body"><p class="card-name">Lindt Frutas Vermelhas</p><p class="card-price">R$ 179,99</p><span class="card-cta">💬 Clique para pedir</span></div></a>
+      <a class="card" href="https://api.whatsapp.com/send?phone=554733059501" target="_blank"><div class="card-img-wrap"><img class="card-img" src="https://image.almeidajunior.com.br/lib/fe32117371640479741078/m/1/VIP+-+LINDT+-+Pralinas+Masterpieces+-+BS.png" alt="Pralinas Masterpieces"></div><div class="card-body"><p class="card-name">Pralinas Masterpieces</p><p class="card-price">R$ 279,99</p><span class="card-cta">💬 Clique para pedir</span></div></a>
+    </div>
+    <div class="store-footer-btns">
+      <a class="btn-store" href="https://api.whatsapp.com/send?phone=554733059501" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+        Falar com a loja
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════ DENGO ════ -->
+<section class="store-section">
+  <div class="wrapper">
+    <div class="store-header">
+      <div class="store-info"><div>
+        <p class="store-eyebrow">Chocolate Artesanal</p>
+        <h2 class="store-name">DENGO</h2>
+      </div></div>
+      <div class="btn-store-group">
+        <a class="btn-store" href="https://api.whatsapp.com/send?phone=5511971836890" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+          Falar com a loja
+        </a>
+      </div>
+    </div>
+    <div class="grid">
+      <a class="card" href="https://api.whatsapp.com/send?phone=5511971836890" target="_blank"><div class="card-img-wrap"><img class="card-img" src="https://image.almeidajunior.com.br/lib/fe32117371640479741078/m/1/Potencial+-+DENGO+-+Ovos+quebra-quebras+limao+e+tapioca+com+coco+-+BS.png" alt="Quebra-quebras limão e tapioca com coco"></div><div class="card-body"><p class="card-name">Quebra-quebras limão e tapioca com coco</p><p class="card-price">R$ 199,90</p><span class="card-cta">💬 Clique para pedir</span></div></a>
+      <a class="card" href="https://api.whatsapp.com/send?phone=5511971836890" target="_blank"><div class="card-img-wrap"><img class="card-img" src="https://image.almeidajunior.com.br/lib/fe32117371640479741078/m/1/Potencial+-+DENGO+-+Ovos+quebra-quebra+banana+com+castanha-de-caju+-+BS.png" alt="Quebra-quebra banana com castanha-de-caju"></div><div class="card-body"><p class="card-name">Quebra-quebra banana com castanha-de-caju</p><p class="card-price">R$ 199,90</p><span class="card-cta">💬 Clique para pedir</span></div></a>
+      <a class="card" href="https://api.whatsapp.com/send?phone=5511971836890" target="_blank"><div class="card-img-wrap"><img class="card-img" src="https://image.almeidajunior.com.br/lib/fe32117371640479741078/m/1/Potencial+-+DENGO+-+Ovos+quebra-quebra+Morango+ao+Leite+-+BS.png" alt="Quebra-quebra Morango ao Leite"></div><div class="card-body"><p class="card-name">Quebra-quebra Morango ao Leite</p><p class="card-price">R$ 199,90</p><span class="card-cta">💬 Clique para pedir</span></div></a>
+      <a class="card" href="https://api.whatsapp.com/send?phone=5511971836890" target="_blank"><div class="card-img-wrap"><img class="card-img" src="https://image.almeidajunior.com.br/lib/fe32117371640479741078/m/1/Potencial+-+DENGO+-+Ovo+quebra-quebra+biju+-+BS.png" alt="Quebra-quebra biju"></div><div class="card-body"><p class="card-name">Quebra-quebra biju</p><p class="card-price">R$ 199,90</p><span class="card-cta">💬 Clique para pedir</span></div></a>
+      <a class="card" href="https://api.whatsapp.com/send?phone=5511971836890" target="_blank"><div class="card-img-wrap"><img class="card-img" src="https://image.almeidajunior.com.br/lib/fe32117371640479741078/m/1/Potencial+-+DENGO+-+Ovo+quebra-quebra+cupuacu+com+castanha-de-caju+-+BS.png" alt="Quebra-quebra cupuaçu com castanha-de-caju"></div><div class="card-body"><p class="card-name">Quebra-quebra cupuaçu com castanha-de-caju</p><p class="card-price">R$ 199,90</p><span class="card-cta">💬 Clique para pedir</span></div></a>
+      <a class="card" href="https://api.whatsapp.com/send?phone=5511971836890" target="_blank"><div class="card-img-wrap"><img class="card-img" src="https://image.almeidajunior.com.br/lib/fe32117371640479741078/m/1/Potencial+-+DENGO+-+Ovo+classico+instenso+70+cacau+-+BS.png" alt="Clássico intenso 70% cacau"></div><div class="card-body"><p class="card-name">Clássico intenso 70% cacau</p><p class="card-price">R$ 99,90</p><span class="card-cta">💬 Clique para pedir</span></div></a>
+      <a class="card" href="https://api.whatsapp.com/send?phone=5511971836890" target="_blank"><div class="card-img-wrap"><img class="card-img" src="https://image.almeidajunior.com.br/lib/fe32117371640479741078/m/1/Potencial+-+DENGO+-+Ovo+recheado+Brigadengo+-+BS.png" alt="Recheado Brigadengo"></div><div class="card-body"><p class="card-name">Recheado Brigadengo</p><p class="card-price">R$ 249,90</p><span class="card-cta">💬 Clique para pedir</span></div></a>
+      <a class="card" href="https://api.whatsapp.com/send?phone=5511971836890" target="_blank"><div class="card-img-wrap"><img class="card-img" src="https://image.almeidajunior.com.br/lib/fe32117371640479741078/m/1/Potencial+-+DENGO+-+Xodo+chocolate+ao+Leite++-+BS.png" alt="Xodó chocolate ao Leite"></div><div class="card-body"><p class="card-name">Xodó chocolate ao Leite</p><p class="card-price">R$ 139,90</p><span class="card-cta">💬 Clique para pedir</span></div></a>
+    </div>
+    <div class="store-footer-btns">
+      <a class="btn-store" href="https://api.whatsapp.com/send?phone=5511971836890" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+        Falar com a loja
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════ CACAU SHOW ════ -->
+<section class="store-section">
+  <div class="wrapper">
+    <div class="store-header">
+      <div class="store-info"><div>
+        <p class="store-eyebrow">Chocolateria Brasileira</p>
+        <h2 class="store-name">CACAU SHOW</h2>
+      </div></div>
+      <div class="btn-store-group">
+        <a class="btn-store" href="https://wa.me/554792305477" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+          Falar com a loja
+        </a>
+      </div>
+    </div>
+    <div class="grid">
+      <a class="card" href="https://wa.me/554792305477" target="_blank"><div class="card-img-wrap"><img class="card-img" src="https://image.almeidajunior.com.br/lib/fe32117371640479741078/m/1/Pontual+-+CACAU+SHOW+-+Ovo+dreams+Dubai+Pistache+-+BS.png" alt="Dreams Dubai Pistache"></div><div class="card-body"><p class="card-name">Dreams Dubai Pistache</p><p class="card-price">R$ 159,99</p><span class="card-cta">💬 Clique para pedir</span></div></a>
+      <a class="card" href="https://wa.me/554792305477" target="_blank"><div class="card-img-wrap"><img class="card-img" src="https://image.almeidajunior.com.br/lib/fe32117371640479741078/m/1/Pontual+-+CACAU+SHOW+-+Ovo+dreams+brownie+-+BS.png" alt="Dreams Brownie"></div><div class="card-body"><p class="card-name">Dreams Brownie</p><p class="card-price">R$ 129,99</p><span class="card-cta">💬 Clique para pedir</span></div></a>
+      <a class="card" href="https://wa.me/554792305477" target="_blank"><div class="card-img-wrap"><img class="card-img" src="https://image.almeidajunior.com.br/lib/fe32117371640479741078/m/1/Pontual+-+CACAU+SHOW+-+Ovo+duo+de+colher+-+BS.png" alt="Duo de colher"></div><div class="card-body"><p class="card-name">Duo de colher</p><p class="card-price">R$ 129,99</p><span class="card-cta">💬 Clique para pedir</span></div></a>
+      <a class="card" href="https://wa.me/554792305477" target="_blank"><div class="card-img-wrap"><img class="card-img" src="https://image.almeidajunior.com.br/lib/fe32117371640479741078/m/1/Pontual+-+CACAU+SHOW+-+Tablets+Chapeu+seletor+Harry+Potter+-+BS.png" alt="Tablets Chapéu Seletor Harry Potter"></div><div class="card-body"><p class="card-name">Tablets Chapéu Seletor Harry Potter</p><p class="card-price">R$ 169,99</p><span class="card-cta">💬 Clique para pedir</span></div></a>
+      <a class="card" href="https://wa.me/554792305477" target="_blank"><div class="card-img-wrap"><img class="card-img" src="https://image.almeidajunior.com.br/lib/fe32117371640479741078/m/1/Pontual+-+CACAU+SHOW+LaCreme+Mezzo+-+BS.png" alt="LaCreme Mezzo"></div><div class="card-body"><p class="card-name">LaCreme Mezzo</p><p class="card-price">R$ 64,99</p><span class="card-cta">💬 Clique para pedir</span></div></a>
+      <a class="card" href="https://wa.me/554792305477" target="_blank"><div class="card-img-wrap"><img class="card-img" src="https://image.almeidajunior.com.br/lib/fe32117371640479741078/m/1/Pontual+-+CACAU+SHOW+-+Ovo+de+corte+do+chef+brownie+-+BS.png" alt="Corte do chef brownie"></div><div class="card-body"><p class="card-name">Corte do chef brownie</p><p class="card-price">R$ 109,99</p><span class="card-cta">💬 Clique para pedir</span></div></a>
+      <a class="card" href="https://wa.me/554792305477" target="_blank"><div class="card-img-wrap"><img class="card-img" src="https://image.almeidajunior.com.br/lib/fe32117371640479741078/m/1/Pontual+-CACAU+SHOW+-+Ovo+dreams+Mil+folhas+-+BS.png" alt="Dreams Mil Folhas"></div><div class="card-body"><p class="card-name">Dreams Mil Folhas</p><p class="card-price">R$ 129,99</p><span class="card-cta">💬 Clique para pedir</span></div></a>
+      <a class="card" href="https://wa.me/554792305477" target="_blank"><div class="card-img-wrap"><img class="card-img" src="https://image.almeidajunior.com.br/lib/fe32117371640479741078/m/1/PONTUAL+-+CACAU+SHOW+-+Ovo+LaCreme+Gold+-+BS.png" alt="LaCreme Gold"></div><div class="card-body"><p class="card-name">LaCreme Gold</p><p class="card-price">R$ 94,99</p><span class="card-cta">💬 Clique para pedir</span></div></a>
+    </div>
+    <div class="store-footer-btns">
+      <a class="btn-store" href="https://wa.me/554792305477" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+        Falar com a loja
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <p><strong>Balneário Shopping</strong> &mdash; Páscoa 2026</p>
+  <p>Av. Santa Catarina, 1 — Balneário Camboriú, SC</p>
+  <p style="margin-top:12px;font-size:0.72rem;">
+    Você está recebendo esta comunicação porque faz parte da nossa base de clientes.<br>
+    <a href="https://www.balneariocamboriushopping.com.br/">Acesse o site do shopping</a>
+  </p>
+</footer>
+
+</body>
+</html>
