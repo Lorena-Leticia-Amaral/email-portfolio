@@ -657,9 +657,13 @@
         const card = document.createElement('div');
         card.className = 'card';
         card.style.animationDelay = `${i * 0.07}s`;
+        const bg = email.type === 'campanha' ? '#732058' : '#1a1a2e';
         card.innerHTML = `
-          <div class="card-preview">
-            <iframe src="${email.file}" loading="lazy" title="${email.title}" sandbox="allow-same-origin"></iframe>
+          <div class="card-preview" style="background:${bg};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;">
+            <div style="width:52px;height:52px;border:1.5px solid rgba(255,255,255,0.25);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="22" height="22" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 8l10 6 10-6"/></svg>
+            </div>
+            <span style="font-family:sans-serif;font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.4);">${email.type}</span>
             <div class="card-overlay">
               <button class="overlay-btn">Visualizar</button>
             </div>
