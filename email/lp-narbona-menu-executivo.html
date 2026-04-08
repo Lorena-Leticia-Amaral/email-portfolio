@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Narbona — Menu Executivo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@300;400;500;600&family=EB+Garamond:wght@400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+  *, *:before, *:after { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+  body { font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif; background-color:#F5F0E8; color:#3A3A3A; overflow-x:hidden; -webkit-font-smoothing:antialiased; width:100%; min-width:320px; }
+  a { color:inherit; }
+  img { max-width:100%; height:auto; display:block; margin:0 auto 32px auto; }
+
+  .nrb-hero { width:100%; min-height:100vh; display:table; table-layout:fixed; position:relative; background-color:#1A1A1A; overflow:hidden; }
+  .nrb-hero:before { content:''; position:absolute; top:0; right:0; bottom:0; left:0; background:radial-gradient(ellipse at 30% 20%, rgba(184,134,11,0.08) 0%, transparent 60%), radial-gradient(ellipse at 70% 80%, rgba(184,134,11,0.05) 0%, transparent 60%); z-index:0; }
+  .nrb-hero-border { position:absolute; top:16px; right:16px; bottom:16px; left:16px; border:1px solid rgba(196,162,101,0.25); pointer-events:none; z-index:1; }
+  .nrb-hero-border-inner { position:absolute; top:24px; right:24px; bottom:24px; left:24px; border:1px solid rgba(196,162,101,0.12); pointer-events:none; z-index:1; }
+  .nrb-corner { position:absolute; width:20px; height:20px; border-color:#C4A265; border-style:solid; border-width:0; opacity:0.4; z-index:1; }
+  .nrb-corner-tl { top:32px; left:32px; border-top-width:1px; border-left-width:1px; }
+  .nrb-corner-tr { top:32px; right:32px; border-top-width:1px; border-right-width:1px; }
+  .nrb-corner-bl { bottom:32px; left:32px; border-bottom-width:1px; border-left-width:1px; }
+  .nrb-corner-br { bottom:32px; right:32px; border-bottom-width:1px; border-right-width:1px; }
+  .nrb-hero-cell { display:table-cell; vertical-align:middle; text-align:center; width:100%; padding:60px 24px; position:relative; z-index:2; }
+  .nrb-hero-content { display:inline-block; text-align:center; max-width:600px; width:100%; animation:nrbFadeUp 1.2s ease-out; }
+  .nrb-hero-name { font-family:'Playfair Display',Georgia,serif; font-size:42px; font-weight:400; letter-spacing:0.3em; color:#F5F0E8; text-transform:uppercase; margin:0 0 8px 0; line-height:1.2; }
+  .nrb-hero-est { font-family:'EB Garamond',Georgia,serif; font-size:13px; letter-spacing:0.45em; color:#C4A265; text-transform:uppercase; margin:0 0 40px 0; line-height:1.5; }
+  .nrb-hero-divider { width:50px; height:1px; background-color:#B8860B; margin:0 auto 40px auto; opacity:0.6; }
+  .nrb-hero-script { font-family:'Great Vibes',cursive; font-size:36px; color:#C9A84C; margin:0 0 14px 0; line-height:1.3; }
+  .nrb-hero-subtitle { font-family:'Cormorant Garamond',Georgia,serif; font-size:14px; letter-spacing:0.25em; color:rgba(245,240,232,0.5); text-transform:uppercase; margin:0 0 12px 0; line-height:1.6; }
+  .nrb-hero-location { font-family:'EB Garamond',Georgia,serif; font-size:12px; letter-spacing:0.2em; color:#C4A265; text-transform:uppercase; margin:0 0 48px 0; line-height:1.5; opacity:0.7; }
+  .nrb-hero-cta { display:inline-block; padding:14px 44px; border:1px solid #C4A265; color:#C9A84C; text-decoration:none; font-family:'EB Garamond',Georgia,serif; font-size:13px; letter-spacing:0.25em; text-transform:uppercase; transition:all 0.4s ease; line-height:1.5; }
+  .nrb-hero-cta:hover { background-color:#B8860B; color:#1A1A1A; border-color:#B8860B; }
+
+  .nrb-info-bar { width:100%; background-color:#B8860B; padding:18px 20px; text-align:center; }
+  .nrb-info-bar p { font-family:'EB Garamond',Georgia,serif; color:#1A1A1A; font-size:13px; letter-spacing:0.15em; text-transform:uppercase; font-weight:500; margin:0; line-height:1.8; }
+  .nrb-info-bar-sep { display:inline; margin:0 8px; opacity:0.5; }
+
+  .nrb-menu { width:100%; max-width:800px; margin:0 auto; padding:60px 20px 80px 20px; }
+  .nrb-section-header { text-align:center; margin:0 0 50px 0; }
+  .nrb-section-label { font-family:'EB Garamond',Georgia,serif; font-size:11px; letter-spacing:0.45em; color:#B8860B; text-transform:uppercase; margin:0 0 14px 0; }
+  .nrb-section-title { font-family:'Playfair Display',Georgia,serif; font-size:28px; font-weight:400; letter-spacing:0.12em; color:#1A1A1A; text-transform:uppercase; margin:0 0 12px 0; }
+  .nrb-section-line { width:40px; height:1px; background-color:#B8860B; margin:0 auto; }
+
+  .nrb-category { margin:0 0 48px 0; }
+  .nrb-category-name { font-family:'EB Garamond',Georgia,serif; font-size:12px; letter-spacing:0.35em; text-transform:uppercase; color:#B8860B; text-align:center; margin:0 0 24px 0; position:relative; line-height:1.5; }
+  .nrb-category-name:before, .nrb-category-name:after { content:''; position:absolute; top:50%; width:40px; height:1px; background-color:#D4C9B8; }
+  .nrb-category-name:before { right:calc(50% + 60px); }
+  .nrb-category-name:after { left:calc(50% + 60px); }
+
+  .nrb-dish { display:flex; align-items:baseline; justify-content:space-between; padding:14px 0; border-bottom:1px solid rgba(212,201,184,0.4); transition:all 0.3s ease; }
+  .nrb-dish:last-child { border-bottom:none; }
+  .nrb-dish-info { flex:1 1 auto; min-width:0; padding-right:16px; }
+  .nrb-dish-name { font-family:'Cormorant Garamond',Georgia,serif; font-size:18px; font-weight:500; color:#1A1A1A; margin:0 0 3px 0; line-height:1.4; }
+  .nrb-dish-desc { font-family:'Cormorant Garamond',Georgia,serif; font-size:14px; color:#6B6B6B; font-style:italic; line-height:1.4; }
+  .nrb-dish-price { font-family:'Playfair Display',Georgia,serif; font-size:17px; color:#B8860B; white-space:nowrap; font-weight:400; flex-shrink:0; }
+  .nrb-dish-simple { text-align:center; padding:8px 0; }
+  .nrb-dish-simple .nrb-dish-name { font-weight:400; font-size:17px; color:#3A3A3A; }
+
+  .nrb-closing { text-align:center; padding:40px 0 0 0; border-top:1px solid #D4C9B8; margin:16px 0 0 0; }
+  .nrb-closing-item { margin:0 0 28px 0; }
+  .nrb-closing-item .nrb-category-name { margin-bottom:12px; }
+  .nrb-closing-item p { font-family:'Cormorant Garamond',Georgia,serif; font-size:17px; color:#3A3A3A; font-style:italic; margin:0; }
+
+  .nrb-included { text-align:center; margin:40px 0 0 0; padding:20px 16px; border:1px solid #D4C9B8; background-color:#FAF7F2; }
+  .nrb-included p { font-family:'EB Garamond',Georgia,serif; font-size:11px; letter-spacing:0.25em; text-transform:uppercase; color:#6B6B6B; margin:0; line-height:1.6; }
+
+  .nrb-reserva { width:100%; background-color:#1A1A1A; padding:70px 24px; position:relative; overflow:hidden; }
+  .nrb-reserva:before { content:''; position:absolute; top:0; right:0; bottom:0; left:0; background:radial-gradient(ellipse at 50% 50%, rgba(184,134,11,0.06) 0%, transparent 70%); }
+  .nrb-reserva-border { position:absolute; top:20px; right:20px; bottom:20px; left:20px; border:1px solid rgba(196,162,101,0.15); pointer-events:none; }
+  .nrb-reserva-content { position:relative; z-index:2; text-align:center; max-width:540px; margin:0 auto; width:100%; }
+  .nrb-reserva-label { font-family:'EB Garamond',Georgia,serif; font-size:11px; letter-spacing:0.45em; text-transform:uppercase; color:#B8860B; margin:0 0 18px 0; }
+  .nrb-reserva-title { font-family:'Playfair Display',Georgia,serif; font-size:28px; font-weight:400; color:#F5F0E8; letter-spacing:0.06em; line-height:1.35; margin:0 0 18px 0; }
+  .nrb-reserva-title em { font-family:'Great Vibes',cursive; font-style:normal; color:#C9A84C; font-size:1.15em; letter-spacing:0.01em; }
+  .nrb-reserva-desc { font-family:'Cormorant Garamond',Georgia,serif; font-size:16px; color:rgba(245,240,232,0.5); line-height:1.7; margin:0 0 36px 0; }
+  .nrb-btn-reserva { display:inline-block; padding:16px 36px; font-family:'EB Garamond',Georgia,serif; font-size:13px; letter-spacing:0.2em; text-transform:uppercase; text-decoration:none; background-color:#B8860B; color:#ffffff; border:1px solid #B8860B; transition:all 0.4s ease; line-height:1.5; }
+  .nrb-btn-reserva:hover { background-color:#C9A84C; border-color:#C9A84C; transform:translateY(-2px); box-shadow:0 8px 32px rgba(184,134,11,0.3); }
+
+  .nrb-floating-cta { position:fixed; bottom:20px; right:20px; background-color:#B8860B; color:#ffffff; display:flex; align-items:center; gap:8px; padding:12px 22px; border-radius:50px; text-decoration:none; font-family:'EB Garamond',Georgia,serif; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; box-shadow:0 4px 20px rgba(184,134,11,0.35); z-index:1000; transition:all 0.3s ease; opacity:0; visibility:hidden; transform:translateY(20px); pointer-events:none; }
+  .nrb-floating-cta.nrb-show { opacity:1; visibility:visible; transform:translateY(0); pointer-events:all; }
+  .nrb-floating-cta:hover { background-color:#C9A84C; transform:translateY(-3px); box-shadow:0 8px 32px rgba(184,134,11,0.45); }
+
+  .nrb-footer { width:100%; background-color:#1A1A1A; padding:48px 24px; text-align:center; }
+  .nrb-footer-name { font-family:'Playfair Display',Georgia,serif; font-size:20px; letter-spacing:0.3em; color:#F5F0E8; text-transform:uppercase; margin:0 0 6px 0; }
+  .nrb-footer-est { font-family:'EB Garamond',Georgia,serif; font-size:11px; letter-spacing:0.4em; color:#C4A265; margin:0 0 24px 0; }
+  .nrb-footer-line { width:40px; height:1px; background-color:#C4A265; margin:0 auto 24px auto; opacity:0.5; }
+  .nrb-footer-info { font-family:'Cormorant Garamond',Georgia,serif; font-size:15px; color:rgba(245,240,232,0.45); line-height:1.8; margin:0; }
+
+  @keyframes nrbFadeUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+
+  @media only screen and (max-width:480px) {
+    .nrb-hero-name { font-size:28px; letter-spacing:0.15em; }
+    .nrb-hero-script { font-size:26px; }
+    .nrb-info-bar p { font-size:10px; letter-spacing:0.1em; line-height:2; }
+    .nrb-info-bar-sep { display:none; }
+    .nrb-menu { padding:40px 16px 60px 16px; }
+    .nrb-dish { flex-direction:column; align-items:flex-start; gap:4px; padding:12px 0; }
+    .nrb-dish-info { padding-right:0; }
+    .nrb-floating-cta span { display:none; }
+    .nrb-floating-cta { padding:14px; border-radius:50%; bottom:16px; right:16px; }
+  }
+  @media only screen and (min-width:769px) {
+    .nrb-hero-name { font-size:56px; letter-spacing:0.35em; }
+    .nrb-hero-script { font-size:48px; }
+    .nrb-section-title { font-size:32px; }
+    .nrb-reserva-title { font-size:34px; }
+    .nrb-dish-name { font-size:20px; }
+    .nrb-dish-price { font-size:18px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="nrb-hero" id="nrb-hero">
+  <div class="nrb-hero-border"></div>
+  <div class="nrb-hero-border-inner"></div>
+  <div class="nrb-corner nrb-corner-tl"></div>
+  <div class="nrb-corner nrb-corner-tr"></div>
+  <div class="nrb-corner nrb-corner-bl"></div>
+  <div class="nrb-corner nrb-corner-br"></div>
+  <div class="nrb-hero-cell">
+    <div class="nrb-hero-content">
+      <img src="https://image.almeidajunior.com.br/lib/fe32117371640479741078/m/1/logo-narbona2.png" alt="Narbona">
+      <div class="nrb-hero-divider"></div>
+      <p class="nrb-hero-script">Menu Executivo</p>
+      <p class="nrb-hero-subtitle">Segunda à Sexta &middot; 11:30 às 15:00</p>
+      <p class="nrb-hero-location">Continente Shopping — Grande Florianópolis</p>
+      <a href="#nrb-menu" class="nrb-hero-cta">Ver Cardápio</a>
+    </div>
+  </div>
+</div>
+
+<!-- INFO BAR -->
+<div class="nrb-info-bar">
+  <p>Entrada <span class="nrb-info-bar-sep">+</span> Principal <span class="nrb-info-bar-sep">+</span> Sobremesa <span class="nrb-info-bar-sep">+</span> Café</p>
+</div>
+
+<!-- MENU -->
+<div class="nrb-menu" id="nrb-menu">
+  <div class="nrb-section-header">
+    <p class="nrb-section-label">Nosso Menu</p>
+    <h2 class="nrb-section-title">Menu Executivo</h2>
+    <div class="nrb-section-line"></div>
+  </div>
+
+  <!-- ENTRADA -->
+  <div class="nrb-category">
+    <p class="nrb-category-name">Entrada</p>
+    <div class="nrb-dish-simple"><p class="nrb-dish-name">Empanada de queijo ou carne</p></div>
+    <div class="nrb-dish-simple"><p class="nrb-dish-name">Salada Mix de Folhas</p></div>
+  </div>
+
+  <!-- PRINCIPAL -->
+  <div class="nrb-category">
+    <p class="nrb-category-name">Principal</p>
+    <div class="nrb-dish">
+      <div class="nrb-dish-info"><p class="nrb-dish-name">Fraldinha</p><p class="nrb-dish-desc">com arroz cremoso</p></div>
+      <span class="nrb-dish-price">R$95</span>
+    </div>
+    <div class="nrb-dish">
+      <div class="nrb-dish-info"><p class="nrb-dish-name">Frango Grelhado</p><p class="nrb-dish-desc">ao molho de cogumelos e purê de batatas</p></div>
+      <span class="nrb-dish-price">R$75</span>
+    </div>
+    <div class="nrb-dish">
+      <div class="nrb-dish-info"><p class="nrb-dish-name">Pescado do Dia</p><p class="nrb-dish-desc">com legumes salteados</p></div>
+      <span class="nrb-dish-price">R$75</span>
+    </div>
+    <div class="nrb-dish">
+      <div class="nrb-dish-info"><p class="nrb-dish-name">Massa Fresca</p><p class="nrb-dish-desc">à carbonara</p></div>
+      <span class="nrb-dish-price">R$65</span>
+    </div>
+    <div class="nrb-dish">
+      <div class="nrb-dish-info"><p class="nrb-dish-name">Risoto Cremoso de Abóbora</p></div>
+      <span class="nrb-dish-price">R$65</span>
+    </div>
+  </div>
+
+  <!-- SOBREMESA & CAFÉ -->
+  <div class="nrb-closing">
+    <div class="nrb-closing-item">
+      <p class="nrb-category-name">Sobremesa</p>
+      <p>Panqueca de doce de leite Narbona</p>
+    </div>
+    <div class="nrb-closing-item">
+      <p class="nrb-category-name">Café</p>
+      <p>Incluso no menu executivo</p>
+    </div>
+  </div>
+  <div class="nrb-included">
+    <p>Entrada + Principal + Sobremesa + Café</p>
+  </div>
+</div>
+
+<!-- RESERVA CTA -->
+<div class="nrb-reserva">
+  <div class="nrb-reserva-border"></div>
+  <div class="nrb-reserva-content">
+    <p class="nrb-reserva-label">Reserve sua Mesa</p>
+    <h2 class="nrb-reserva-title">Uma Experiência<br><em>Inesquecível</em></h2>
+    <p class="nrb-reserva-desc">Garanta seu lugar e desfrute do nosso Menu Executivo<br>no Continente Shopping — Grande Florianópolis.</p>
+    <a href="https://www.pensanoevento.com.br/sitev2/casas/2349/narbona-florianopolis" class="nrb-btn-reserva" target="_blank">Reservar no Site</a>
+  </div>
+</div>
+
+<!-- FLOATING CTA -->
+<a href="https://www.pensanoevento.com.br/sitev2/casas/2349/narbona-florianopolis" class="nrb-floating-cta" id="nrbFloatingCta" target="_blank">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+    <line x1="16" y1="2" x2="16" y2="6"></line>
+    <line x1="8" y1="2" x2="8" y2="6"></line>
+    <line x1="3" y1="10" x2="21" y2="10"></line>
+  </svg>
+  <span>Reservar</span>
+</a>
+
+<!-- FOOTER -->
+<div class="nrb-footer">
+  <p class="nrb-footer-name">Narbona</p>
+  <p class="nrb-footer-est">Est. 1909</p>
+  <div class="nrb-footer-line"></div>
+  <p class="nrb-footer-info">Continente Shopping — Grande Florianópolis<br>Segunda à Sexta &middot; 11:30 às 15:00</p>
+</div>
+
+<script>
+  (function() {
+    var ctaBtn = document.querySelector('.nrb-hero-cta');
+    if (ctaBtn) {
+      ctaBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        var t = document.getElementById('nrb-menu');
+        if (t) t.scrollIntoView({ behavior: 'smooth' });
+      });
+    }
+    var fc = document.getElementById('nrbFloatingCta');
+    var hs = document.getElementById('nrb-hero');
+    if (fc && hs) {
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function(entries) {
+          entries.forEach(function(e) {
+            if (!e.isIntersecting) fc.classList.add('nrb-show');
+            else fc.classList.remove('nrb-show');
+          });
+        }, { threshold: 0.1 }).observe(hs);
+      } else {
+        window.addEventListener('scroll', function() {
+          if (window.pageYOffset > 400) fc.classList.add('nrb-show');
+          else fc.classList.remove('nrb-show');
+        });
+      }
+    }
+  })();
+</script>
+</body>
+</html>
